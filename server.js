@@ -1,15 +1,15 @@
+//====================== My first Express server =======================\\
+
+
 var express = require('express')
 var app = express()
 var port = 3213
 app.get('/about',function(req , res){
 
 	res.send('I am from server!')
-
-	// console.log(req)
-	// console.log("printing response object")
-	// console.log(res)
-
 })
+
+ //=========================Middleware =====================================\\
 
 var middleware = {
 	requireAuthentication:function(req,res,next){
@@ -24,7 +24,6 @@ var middleware = {
 
 }
 
-// app.use(middleware.requestTime)
 app.use(middleware.requireAuthentication)
 app.get('/about-us', middleware.requestTime, function(req , res){
 
